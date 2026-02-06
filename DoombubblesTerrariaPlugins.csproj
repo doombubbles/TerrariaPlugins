@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net481</TargetFramework>
+        <LangVersion>5</LangVersion>
+        <AssemblySearchPaths>$(AssemblySearchPaths);{GAC}</AssemblySearchPaths>
+        <TerrariaPath>C:\Program Files (x86)\Steam\steamapps\common\Terraria</TerrariaPath>
+        <TerrariaPatcherPath>$(TerrariaPath)\TerrariaPatcher</TerrariaPatcherPath>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86"/>
+        <Reference Include="Microsoft.Xna.Framework.Game, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86"/>
+        <Reference Include="Microsoft.Xna.Framework.Graphics, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86"/>
+        <Reference Include="Terraria">
+            <HintPath>$(TerrariaPath)\Terraria.exe</HintPath>
+        </Reference>
+        <Reference Include="ReLogic">
+            <HintPath>$(TerrariaPath)\ReLogic.dll</HintPath>
+        </Reference>
+        <Reference Include="PluginLoader.XNA">
+            <HintPath>$(TerrariaPath)\PluginLoader.XNA.dll</HintPath>
+        </Reference>
+        <Reference Include="Newtonsoft.Json">
+            <HintPath>$(TerrariaPath)\Newtonsoft.Json.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+
+    <!-- For setup where the DoombubblesPlugins folder is made as a junction to the DoombubblesPlugins folder in the real terraria Plugins folder such that debug symbols will work-->
+    <ItemGroup Condition="'$(Configuration)' == 'Debug'">
+        <Compile Remove="DoombubblesPlugins/**"/>
+        <Compile Include="$(TerrariaPath)/Plugins/DoombubblesPlugins/**/*.cs" Link="DoombubblesPlugins\%(RecursiveDir)%(FileName)%(Extension)"/>
+    </ItemGroup>
+    
+    <ItemGroup>
+      <Content Include=".github\workflows\build.yml" />
+    </ItemGroup>
+
+    <Target Name="CopyPlugins" AfterTargets="Build">
+        <ItemGroup>
+            <Plugins Include="$(ProjectDir)DoombubblesPlugins\*.cs"/>
+        </ItemGroup>
+        <Copy SourceFiles="@(Plugins)" Condition="'$(TerrariaPatcherPath)' != ''" DestinationFolder="$(TerrariaPatcherPath)\Plugins\DoombubblesPlugins" OverwriteReadOnlyFiles="true"/>
+    </Target>
+
+</Project>

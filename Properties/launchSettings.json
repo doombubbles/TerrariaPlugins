@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "Terraria": {
+      "commandName": "Executable",
+      "executablePath": "$(TerrariaPath)\\Terraria.exe",
+      "workingDirectory": "$(TerrariaPath)"
+    }
+  }
+}
