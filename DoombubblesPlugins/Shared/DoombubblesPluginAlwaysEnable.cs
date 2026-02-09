@@ -44,12 +44,12 @@ namespace DoombubblesTerrariaPlugins
                 if (!initalized || IgnoreUpdatesUntil > DateTimeOffset.Now) return;
 
                 IgnoreUpdatesUntil = DateTimeOffset.Now.AddMilliseconds(100);
+                Main.NewText("Updated DoombubblesPlugin settings from Plugins.ini");
                 foreach (var setting in Plugins.Values.SelectMany(plugin => plugin.Settings.Values))
                 {
-                    setting.Load();
+                    setting.Load(true);
                 }
 
-                Main.NewText("Updated DoombubblesPlugin settings from Plugins.ini");
             };
             fileSystemWatcher.EnableRaisingEvents = true;
 
@@ -121,11 +121,16 @@ namespace DoombubblesTerrariaPlugins
             Load();
         }
 
-        public void Load()
+        public void Load(bool printChanges = false)
         {
             try
             {
+                var before = ToString();
                 SetFrom(IniAPI.ReadIni(section, name, ToString(), writeIt: true));
+                if (printChanges && before != ToString())
+                {
+                    Main.NewText(string.Format("{0}.{1} changed", section, name));
+                }
             }
             catch (Exception e)
             {

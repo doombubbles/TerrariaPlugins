@@ -1,15 +1,75 @@
-# Doombubbles Terraria Plugins
+# Terraria Plugins [[Download DoombubblesPlugins.zip]](https://github.com/doombubbles/TerrariaPlugins/releases/latest/download/DoombubblesPlugins.zip)
 
-A set of plugins for use with [TerrariaPatcher](https://github.com/dougbenham/TerrariaPatcher) that recreate a few of the features of QoL mods I usually use in tModLoader.
+A set of plugins for use with [TerrariaPatcher](http://forums.terraria.org/index.php?threads/24615/) in 1.4.5+, many of which recreate features from QoL mods I usually use in tModLoader 1.4.4
 
 ## Installation
 
+Follow the instructions in the [TerrariaPatcher Forum Post](http://forums.terraria.org/index.php?threads/24615/) to install it. When running it, you will need to keep the "Plugin support (loads from \Plugins\*.cs)" checkbox enabled.
+
+Then, go to the [latest release](https://github.com/doombubbles/TerrariaPlugins/releases/latest) and download [DoombubblesPlugins.zip](https://github.com/doombubbles/TerrariaPlugins/releases/latest/download/DoombubblesPlugins.zip).
+Unzip it and put the contents into your TerrariaPatcher Plugins folder. You should now see them in the plugins list and be able to enable/disable them. 
+
 ## Settings
 
-Settings/hotkeys are stored `Plugins.ini` like other TerrariaPatcher plugins. Settings for my plugins will update in game automatically if the file is edited.
+Settings/hotkeys are stored in `Plugins.ini` like other TerrariaPatcher plugins. Settings for my plugins will update in game automatically if the file is edited.
 
 For changing hotkeys, [see here for key names](https://docs.monogame.net/api/Microsoft.Xna.Framework.Input.Keys.html).
 To use modifiers, put them before the key name with a comma like `Alt,Shift,OemPipe`
+
+<details>
+
+<summary>Example Default Settings</summary>
+
+```ini
+[DryadSeeds]
+BloomConditions=true
+[HelpfulHotkeys]
+AutoRecall=Home
+QuickBuffFavoritedOnly=Z
+DashHotkey=X
+DisableDoubleTapDash=false
+SwapArmorVanity=None
+SwapArmorInventory=None
+SwapArmorInventorySlot1=29
+SwapArmorInventorySlot2=39
+SwapArmorInventorySlot3=49
+SwapHotbar=None
+CycleAmmo=OemPeriod
+AutoCycleAmmo=false
+ToggleAutoCycleAmmo=Shift,OemPeriod
+StackToNearbyChests=None
+RulerHotkey=None
+SwitchFrameSkipMode=None
+ToggleAutoPause=Pause
+QuickUseItem10=None
+QuickUseItem11=None
+QuickUseItem12=None
+QuickUseItem13=None
+QuickUseItem14=None
+QuickUseItem15=None
+QuickUseItem16=None
+QuickUseItem17=None
+QuickUseItem18=None
+QuickUseItem19=None
+SwapAccessoryVanity1=None
+SwapAccessoryVanity2=None
+SwapAccessoryVanity3=None
+SwapAccessoryVanity4=None
+SwapAccessoryVanity5=None
+SwapAccessoryVanity6=None
+SwapAccessoryVanity7=None
+SwapAccessoryVanityAll=None
+[PermaAmmo]
+RequiredCount=9999
+[PermaBuffs]
+ItemRequiredCount=30
+StationRequiredCount=1
+CumulativeTotal=false
+AllowedItemBuffs=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,26,71,73,74,75,76,77,78,79,104,105,106,107,108,109,110,111,112,113,114,115,116,117,121,122,123,124,206,207,376,25,257]
+StationBuffs={"487":29,"966":87,"1859":89,"2177":93,"2999":150,"148":86,"3117":157,"1431":158,"3198":159,"3750":192,"4276":215,"3814":348}
+```
+
+</details>
 
 ## Plugins List
 
@@ -86,7 +146,7 @@ Note that in pre-hardmode master mode, you will have slots 1-5 and 7, not 1-6.
 
 #### Cycle Ammo (Default: Period)
 
-Cycles the positions of the items in the ammo slots. 
+Cycles the positions of the items in the ammo slots.
 
 #### Auto Cycle Ammo (Default: Shift+Period)
 

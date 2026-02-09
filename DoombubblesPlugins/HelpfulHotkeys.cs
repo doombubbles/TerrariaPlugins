@@ -91,9 +91,9 @@ namespace DoombubblesTerrariaPlugins
 
         public HelpfulHotkeys()
         {
-            for (var slot = 11; slot <= 20; slot++)
+            for (var slot = 10; slot <= 19; slot++)
             {
-                AddHotkeySetting("QuickUseItem" + slot, new Hotkey { Action = DoQuickUseItem(slot - 1) });
+                AddHotkeySetting("QuickUseItem" + slot, new Hotkey { Action = DoQuickUseItem(slot) });
             }
 
             for (var slot = 0; slot < Player.SupportedSlotsAccs; slot++)
