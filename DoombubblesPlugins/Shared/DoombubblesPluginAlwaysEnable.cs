@@ -22,7 +22,7 @@ namespace DoombubblesTerrariaPlugins
             get { return GetType().Name; }
         }
 
-        private static bool initalized;
+        private static bool initialized;
 
         public static DateTimeOffset IgnoreUpdatesUntil = DateTimeOffset.MinValue;
 
@@ -41,7 +41,7 @@ namespace DoombubblesTerrariaPlugins
             var fileSystemWatcher = new FileSystemWatcher(Environment.CurrentDirectory, "Plugins.ini");
             fileSystemWatcher.Changed += (sender, args) =>
             {
-                if (!initalized || IgnoreUpdatesUntil > DateTimeOffset.Now) return;
+                if (!initialized || IgnoreUpdatesUntil > DateTimeOffset.Now) return;
 
                 IgnoreUpdatesUntil = DateTimeOffset.Now.AddMilliseconds(100);
                 Main.NewText("Updated DoombubblesPlugin settings from Plugins.ini");
@@ -49,7 +49,6 @@ namespace DoombubblesTerrariaPlugins
                 {
                     setting.Load(true);
                 }
-
             };
             fileSystemWatcher.EnableRaisingEvents = true;
 
@@ -101,7 +100,7 @@ namespace DoombubblesTerrariaPlugins
 
         public void OnInitialize()
         {
-            initalized = true;
+            initialized = true;
         }
     }
 

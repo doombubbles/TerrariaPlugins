@@ -61,6 +61,7 @@ SwapAccessoryVanity7 = None
 SwapAccessoryVanityAll = None
 [PermaAmmo]
 RequiredCount = 9999
+ThrownRequiredCount = 999
 [PermaBuffs]
 ItemRequiredCount = 30
 StationRequiredCount = 1
@@ -98,6 +99,7 @@ then still eat a greater food item to be temporarily Exquisitely Stuffed
 ### Perma Ammo
 
 When firing using a stack of ammo that's at 9999, it won't decrement and instead will stay at 9999. Required amount is configurable.
+Also applies to consumable ranged weapons, which have their own configurable setting `ThrownRequiredCount` which defaults to 999.
 
 ### Dryad Seeds
 
