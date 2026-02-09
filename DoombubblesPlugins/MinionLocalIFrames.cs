@@ -1,26 +1,30 @@
+using System.Linq;
 using PluginLoader;
 using Terraria;
 using Terraria.ID;
 
 namespace DoombubblesTerrariaPlugins
 {
-    public class MinionIFrames : DoombubblesPlugin, IPluginProjectileAI
+    public class MinionLocalIFrames : DoombubblesPlugin, IPluginProjectileAI
     {
+        private static readonly Setting<int[]> AffectedProjectiles = new int[]
+        {
+            ProjectileID.ImpFireball,
+            ProjectileID.VampireFrog,
+            ProjectileID.BabySlime,
+            ProjectileID.VenomSpider,
+            ProjectileID.JumperSpider,
+            ProjectileID.DangerousSpider,
+            ProjectileID.Retanimini,
+            ProjectileID.Spazmamini,
+            ProjectileID.Tempest,
+        };
+
         public void OnProjectileAI001(Projectile projectile)
         {
-            switch (projectile.type)
+            if (AffectedProjectiles.Value.Contains(projectile.type))
             {
-                case ProjectileID.ImpFireball:
-                case ProjectileID.VampireFrog:
-                case ProjectileID.BabySlime:
-                case ProjectileID.VenomSpider:
-                case ProjectileID.JumperSpider:
-                case ProjectileID.DangerousSpider:
-                case ProjectileID.Retanimini:
-                case ProjectileID.Spazmamini:
-                case ProjectileID.Tempest:
-                    StaticToLocal(projectile);
-                    break;
+                StaticToLocal(projectile);
             }
         }
 

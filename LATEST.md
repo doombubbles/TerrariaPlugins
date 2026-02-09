@@ -1,0 +1,2 @@
+- Added WhipBuffStacking plugin
+- MinionLocalIFrames now uses a configurable projectile list

@@ -25,3 +25,4 @@ jobs:
           name: ${{ github.ref_name }}
           files: DoombubblesPlugins.zip
           generate_release_notes: true
+          body_path: LATEST.md
