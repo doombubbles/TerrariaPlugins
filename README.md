@@ -113,9 +113,9 @@ Makes the Dryad sell herb seeds. By default, seeds are only sold when their bloo
 - Firebloosom - Sunset (3:45 PM to 7:30 PM) unless it is raining
 - Shiverthorn - At random (Moon Phase is Gibbous/Cresecent)
 
-### Minishark Knockback
+### Guns Minimum Knockback
 
-Simply gives the Minishark 1 base knockback so it can receive more prefixes such as Unreal.
+Simply makes all guns (bullet shooting weapons) have at least 1 base knockback so they can receive more prefixes, such as Unreal.
 
 ### Helpful Hotkeys
 
