@@ -93,8 +93,8 @@ namespace DoombubblesPlugins
                 var index = player.FindBuffIndex(buffType);
                 if (index == -1)
                 {
-                    if (BuffID.Sets.IsFedState[buffType] && // Don't override better Well Fed buff
-                        player.buffType.Any(b => BuffID.Sets.IsFedState[b] && b > buffType))
+                    if (BuffID.Sets.IsWellFed[buffType] && // Don't override better Well Fed buff
+                        player.buffType.Any(b => BuffID.Sets.IsWellFed[b] && b > buffType))
                     {
                         continue;
                     }
