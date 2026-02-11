@@ -1,1 +1,2 @@
 - Removed Dash Hotkey and settings because Terraria added those lol
+- Added DartUnNerfs Plugin

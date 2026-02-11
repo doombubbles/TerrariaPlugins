@@ -69,7 +69,7 @@ CumulativeTotal = false
 AllowedItemBuffs = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,26,71,73,74,75,76,77,78,79,104,105,106,107,108,109,110,111,112,113,114,115,116,117,121,122,123,124,206,207,376,25,257]
 StationBuffs = {"487":29,"966":87,"1859":89,"2177":93,"2999":150,"148":86,"3117":157,"1431":158,"3198":159,"3750":192,"4276":215,"3814":348}
 [WhipBuffStacking]
-WorkingBuffs=[308,311,312,314,365]
+WorkingBuffs = [308,311,312,314,365]
 ```
 
 </details>
@@ -81,6 +81,11 @@ WorkingBuffs=[308,311,312,314,365]
 Makes Whips' self-buffs no longer be removed when using another whip. This includes the Cobwhip Buff (Spider), Snapthorn Buff, Coolwhip Buff (Snowflake), Durendal Buff, and Dark Harvest Buff.
 
 Note that still only 1 tag can be applied per enemy at a time
+
+### Dart Un-Nerfs
+
+Undoes the nerfs to darts that happened in 1.4.5: Crystal Darts are back up to 7 total hits with no damage dropoff, Ichor Darts are back to 10 damage, and Cursed Darts' Flames are back to 3 total hits.
+There's a setting for the buff that Cursed Darts got for their pierce, by default this mod returns them to only having 1 total hit.
 
 ### Minion Local I-Frames
 
@@ -132,10 +137,6 @@ Standard quick buff but only including favorited items
 #### Quick Use Item Hotkeys (Defaults: None)
 
 10 configurable hotkeys for quick using the items in slots [10 - 19](InventorySlots.jpg) (top row of inventory, directly below hotbar, visually the 11th through 20th slots)
-
-#### Dash Hotkey (Default X)
-
-Activates the player's dash, if they have one. Additionally, there's a `DisableDoubleTapDash` setting (default false).
 
 #### Swap Armor with Inventory (Default: None)
 
