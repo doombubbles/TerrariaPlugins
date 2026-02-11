@@ -26,14 +26,6 @@ namespace DoombubblesTerrariaPlugins
             Key = Keys.Z
         };
 
-        private static readonly HotkeySetting DashHotkey = new Hotkey
-        {
-            Action = DoDash,
-            Key = Keys.X
-        };
-
-        private static readonly Setting<bool> DisableDoubleTapDash = false;
-
         private static readonly HotkeySetting SwapArmorVanity = new Hotkey
         {
             Action = DoSwapArmorVanity
@@ -301,36 +293,6 @@ namespace DoombubblesTerrariaPlugins
             }
         }
 
-        private static bool justDashed;
-
-        private static void DoDash()
-        {
-            if (Player.controlRight)
-            {
-                Player.dashTime = 15;
-                Player.releaseRight = true;
-            }
-            else if (Player.controlLeft)
-            {
-                Player.dashTime = -15;
-                Player.releaseLeft = true;
-            }
-            else if (Player.direction == 1)
-            {
-                Player.dashTime = 15;
-                Player.releaseRight = true;
-                Player.controlRight = true;
-            }
-            else if (Player.direction == -1)
-            {
-                Player.dashTime = -15;
-                Player.releaseLeft = true;
-                Player.controlLeft = true;
-            }
-
-            justDashed = true;
-        }
-
         private static void ToggleRuler()
         {
             SoundEngine.PlaySound(SoundID.MenuTick);
@@ -380,13 +342,6 @@ namespace DoombubblesTerrariaPlugins
 
                 player.selectedItemState.Select(previousItem);
             }
-
-            if (DisableDoubleTapDash && !justDashed)
-            {
-                player.dashTime = 0;
-            }
-
-            justDashed = false;
         }
 
         private static bool autoCycledThisFrame;

@@ -1,4 +1,1 @@
-- Added WhipBuffStacking plugin
-- MinionLocalIFrames now uses a configurable projectile list
-- Improved PermaAmmo behavior when using lower RequiredCount, and made a separate ThrownRequiredCount for consumable ranged weapons that defaults to 999.
-- Turned MinisharkKnockback into GunsMinimumKnockback, makes all bullet shooting items have minimum 1 knockback (aka Clockwork Assault rifle too)
+- Removed Dash Hotkey and settings because Terraria added those lol
