@@ -25,7 +25,7 @@ namespace DoombubblesPlugins
             BuffID.Heartreach, BuffID.Calm, BuffID.Builder, BuffID.Titan, BuffID.Flipper, BuffID.Summoning,
             BuffID.Dangersense, BuffID.AmmoReservation, BuffID.Lifeforce, BuffID.Endurance, BuffID.Rage,
             BuffID.Inferno, BuffID.Wrath, BuffID.Fishing, BuffID.Sonar, BuffID.Crate, BuffID.Warmth, BuffID.WellFed2,
-            BuffID.WellFed3, BuffID.TorchGodPotion, BuffID.Tipsy, BuffID.Lucky
+            BuffID.WellFed3, BuffID.TorchGodPotion, BuffID.Tipsy, BuffID.Lucky, BuffID.BiomeSight
         };
 
         private static readonly Setting<Dictionary<int, int>> StationBuffs = new Dictionary<int, int>
@@ -41,8 +41,16 @@ namespace DoombubblesPlugins
             { ItemID.SharpeningStation, BuffID.Sharpened },
             { ItemID.SliceOfCake, BuffID.SugarRush },
             { ItemID.CatBast, BuffID.CatBast },
-            { ItemID.WarTable, BuffID.WarTable }
+            { ItemID.WarTable, BuffID.WarTable },
         };
+
+        private static IEnumerable<int> AllowedStationBuffs
+        {
+            get
+            {
+                return StationBuffs.Value.Values.Append(BuffID.Kite);
+            }
+        }
 
         public void OnPlayerUpdate(Player player)
         {
@@ -69,6 +77,9 @@ namespace DoombubblesPlugins
                 else if (StationBuffs.Value.ContainsKey(item.type))
                 {
                     buffType = StationBuffs.Value[item.type];
+                } else if (ItemID.Sets.IsAKite[item.type])
+                {
+                    buffType = BuffID.Kite;
                 }
                 else continue;
 
@@ -86,7 +97,7 @@ namespace DoombubblesPlugins
 
             foreach (var buffType in buffCounts.Keys)
             {
-                var required = StationBuffs.Value.ContainsValue(buffType) ? StationRequiredCount : ItemRequiredCount;
+                var required = AllowedStationBuffs.Contains(buffType) ? StationRequiredCount : ItemRequiredCount;
 
                 if (buffCounts[buffType] < required) continue;
 

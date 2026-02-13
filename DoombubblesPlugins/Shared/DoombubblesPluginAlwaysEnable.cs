@@ -98,7 +98,7 @@ namespace DoombubblesTerrariaPlugins
             AddSetting(name, setting);
         }
 
-        public void OnInitialize()
+        public virtual void OnInitialize()
         {
             initialized = true;
         }
