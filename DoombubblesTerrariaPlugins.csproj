@@ -6,6 +6,8 @@
         <AssemblySearchPaths>$(AssemblySearchPaths);{GAC}</AssemblySearchPaths>
         <TerrariaPath>C:\Program Files (x86)\Steam\steamapps\common\Terraria</TerrariaPath>
         <TerrariaPatcherPath>$(TerrariaPath)\TerrariaPatcher</TerrariaPatcherPath>
+        <Configurations>Debug;Release;Personal</Configurations>
+        <Platforms>AnyCPU</Platforms>
     </PropertyGroup>
 
     <ItemGroup>
@@ -27,9 +29,17 @@
     </ItemGroup>
 
     <!-- For setup where the DoombubblesPlugins folder is made as a junction to the DoombubblesPlugins folder in the real terraria Plugins folder such that debug symbols will work-->
-    <ItemGroup Condition="'$(Configuration)' == 'Debug'">
+    <ItemGroup Condition="'$(Configuration)' == 'Personal'">
         <Compile Remove="DoombubblesPlugins/**"/>
         <Compile Include="$(TerrariaPath)/Plugins/DoombubblesPlugins/**/*.cs" Link="DoombubblesPlugins\%(RecursiveDir)%(FileName)%(Extension)"/>
+        
+        <Compile Include="$(TerrariaPath)/Plugins/PersonalPlugins/**/*.cs" Link="PersonalPlugins\%(RecursiveDir)%(FileName)%(Extension)"/>
+        <Reference Condition="Exists('$(TerrariaPath)\MonoMod.RuntimeDetour.dll')" Include="MonoMod.RuntimeDetour.dll">
+            <HintPath>$(TerrariaPath)\MonoMod.RuntimeDetour.dll</HintPath>
+        </Reference>
+        <Reference Condition="Exists('$(TerrariaPath)\MMHOOK_Terraria.dll')" Include="MMHOOK_Terraria.dll">
+            <HintPath>$(TerrariaPath)\MMHOOK_Terraria.dll</HintPath>
+        </Reference>
     </ItemGroup>
     
     <ItemGroup>

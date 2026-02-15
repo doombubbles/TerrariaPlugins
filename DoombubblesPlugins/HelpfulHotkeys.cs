@@ -324,6 +324,32 @@ namespace DoombubblesTerrariaPlugins
         {
             if (Player.selectedItem == index) return;
 
+            var item = Player.inventory[index];
+
+            if (item == null || !item.active) return;
+
+            if (item.mountType != -1)
+            {
+                var mountDict = new Dictionary<Item, int>();
+
+                foreach (var i in Player.inventory.Concat(Player.miscEquips))
+                {
+                    if (!i.active || i.mountType == -1 || item == i) continue;
+
+                    mountDict[i] = i.mountType;
+                    i.mountType = -1;
+                }
+
+                Player.QuickMount();
+
+                foreach (var i in mountDict.Keys)
+                {
+                    i.mountType = mountDict[i];
+                }
+
+                return;
+            }
+
             quickUsingItem = index;
             previousItem = Player.selectedItem;
             Player.selectedItemState.Select(index);

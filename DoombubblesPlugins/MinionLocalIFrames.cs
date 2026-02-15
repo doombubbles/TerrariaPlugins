@@ -5,7 +5,7 @@ using Terraria.ID;
 
 namespace DoombubblesTerrariaPlugins
 {
-    public class MinionLocalIFrames : DoombubblesPlugin, IPluginProjectileAI
+    public class MinionLocalIFrames : DoombubblesPlugin, IPluginUpdate
     {
         private static readonly Setting<int[]> AffectedProjectiles = new int[]
         {
@@ -20,14 +20,6 @@ namespace DoombubblesTerrariaPlugins
             ProjectileID.Tempest,
         };
 
-        public void OnProjectileAI001(Projectile projectile)
-        {
-            if (AffectedProjectiles.Value.Contains(projectile.type))
-            {
-                StaticToLocal(projectile);
-            }
-        }
-
         private static void StaticToLocal(Projectile projectile)
         {
             if (!projectile.usesIDStaticNPCImmunity || projectile.usesLocalNPCImmunity) return;
@@ -36,6 +28,21 @@ namespace DoombubblesTerrariaPlugins
             projectile.idStaticNPCHitCooldown = -1;
             projectile.usesIDStaticNPCImmunity = false;
             projectile.usesLocalNPCImmunity = true;
+        }
+
+        public void OnUpdate()
+        {
+            if (Main.gameMenu) return;
+
+            foreach (var projectile in Main.projectile)
+            {
+                if (projectile == null || !projectile.active) continue;
+
+                if (AffectedProjectiles.Value.Contains(projectile.type))
+                {
+                    StaticToLocal(projectile);
+                }
+            }
         }
     }
 }

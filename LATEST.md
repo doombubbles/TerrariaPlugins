@@ -1,1 +1,4 @@
-- Updated Perma Buffs to support War Table, Kites, Biome Sight
+- Added TrashRemovesPrefix plugin
+- Added LegendaryYoyos plugin
+- Added SandgunTidy plugin
+- For the quick use item helpful hotkeys, mounts will now be used in the style of the quick mount hotkey, meaning they can be used without interrupting your weapon usage

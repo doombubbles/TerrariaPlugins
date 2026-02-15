@@ -1,3 +1,8 @@
 <Solution>
+  <Configurations>
+    <BuildType Name="Debug" />
+    <BuildType Name="Personal" />
+    <BuildType Name="Release" />
+  </Configurations>
   <Project Path="DoombubblesTerrariaPlugins.csproj" />
 </Solution>

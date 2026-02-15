@@ -106,6 +106,10 @@ then still eat a greater food item to be temporarily Exquisitely Stuffed
 When firing using a stack of ammo that's at 9999, it won't decrement and instead will stay at 9999. Required amount is configurable.
 Also applies to consumable ranged weapons, which have their own configurable setting `ThrownRequiredCount` which defaults to 999.
 
+### Trash Removes Prefix
+
+Makes it so that putting an item in the trash will remove its prefix from it. This is primarily meant as a quick helper to let you stack weapon / accessory drops together in chests easier.
+
 ### Dryad Seeds
 
 Makes the Dryad sell herb seeds. By default, seeds are only sold when their blooming conditions are met, but this can be changed with the `BloomConditions` setting.
@@ -121,6 +125,14 @@ Makes the Dryad sell herb seeds. By default, seeds are only sold when their bloo
 ### Guns Minimum Knockback
 
 Simply makes all guns (bullet shooting weapons) have at least 1 base knockback so they can receive more prefixes, such as Unreal.
+
+### Legendary Yoyos
+
+Makes all Yoyos able to receive the special variant of the Legendary prefix that the Terrarian is able to receive.
+
+### Sandgun Tidy
+
+Makes the Sandgun's projectiles not turn into sand blocks when landing, in case you just want to use it more like a normal weapon.
 
 ### Helpful Hotkeys
 
